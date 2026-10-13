@@ -1,0 +1,18 @@
+# Package Managers
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+bun.lock
+bun.lockb
+
+# Miscellaneous
+/static/
+
+# Dokumente der Steuerungs- und Qualitäts-Threads, nicht automatisch formatieren
+/CHANGELOG.md
+/ROADMAP.md
+/docs/
+/.github/pull_request_template.md
+
+# Von drizzle-kit erzeugt
+/drizzle/meta/
