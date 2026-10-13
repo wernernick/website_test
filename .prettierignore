@@ -13,3 +13,6 @@ bun.lockb
 /ROADMAP.md
 /docs/
 /.github/pull_request_template.md
+
+# Von drizzle-kit erzeugt
+/drizzle/meta/

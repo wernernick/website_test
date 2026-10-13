@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    name: Lint, Check, Test, Build
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: app
+          POSTGRES_PASSWORD: app
+          POSTGRES_DB: app
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U app -d app"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+
+    env:
+      # Nur für den CI-Container, keine echten Zugangsdaten.
+      DATABASE_URL: postgres://app:app@localhost:5432/app
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      - name: Lint (Prettier + ESLint)
+        run: npm run lint
+
+      - name: Typprüfung (svelte-check)
+        run: npm run check
+
+      - name: Migrationen anwenden
+        run: npm run db:migrate
+
+      - name: Playwright-Browser installieren
+        run: npx playwright install --with-deps chromium
+
+      - name: Tests (Unit, Komponenten, E2E)
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Health-Check gegen den gebauten Server
+        run: |
+          PORT=3000 node build &
+          for i in $(seq 1 20); do
+            if curl -fsS http://localhost:3000/api/health; then exit 0; fi
+            sleep 1
+          done
+          echo "Health-Check fehlgeschlagen" >&2
+          exit 1
