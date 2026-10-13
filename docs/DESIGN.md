@@ -84,7 +84,7 @@ Svelte-Komponenten in `src/lib/components/` verwenden die Klassen aus `base.css`
 | accent auf bg / surface | 6.0 / 6.4 | 8.6 / 7.8 |
 | on-accent auf accent | 6.4 | 8.6 |
 | accent-strong auf accent-soft | 7.7 | 7.4 |
-| success auf success-soft / accent-soft | 5.1 / 5.0 | 6.7 / 7.0 |
+| success auf success-soft / accent-soft | 5.1 / 5.0 | 6.7 / 6.0 |
 | warning auf warning-soft | 5.0 | 6.9 |
 | danger auf danger-soft | 4.9 | 5.6 |
 | info auf info-soft | 5.5 | 6.0 |
