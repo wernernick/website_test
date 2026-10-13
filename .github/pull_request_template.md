@@ -16,7 +16,9 @@ Nachher:
 - [ ] Build, Tests und Linter laufen lokal grün
 - [ ] Mobil, Tablet und Desktop angesehen
 - [ ] Tastaturbedienung und Kontraste geprüft
-- [ ] Keine Zugangsdaten oder privaten Daten enthalten
+- [ ] Keine Zugangsdaten oder privaten Daten enthalten (`.env` nicht eingecheckt)
+- [ ] Schemaänderung? Dann mit Migration unter `drizzle/`
+- [ ] Neue Seite oder neuer Ablauf? Dann mit Playwright-Test unter `tests/`
 
 ## Vorschlag für den Versionsverlauf
 
