@@ -55,6 +55,7 @@ bauen darauf auf, sobald es gemergt ist.
 - Schutz: Ratenbegrenzung bei Anmeldung, CSRF durch SvelteKit-Standard, serverseitige Validierung (z. B. mit Zod oder Valibot).
 - Hosting entscheiden und Deploy-Workflow einrichten (Staging bei jedem Merge auf `main`).
 - Impressum und Datenschutzerklärung.
+- Konto löschen im geschützten Bereich (Recht auf Löschung, Art. 17 DSGVO), inkl. aller Sitzungen.
 
 ### v0.3.0 – Kernfunktion
 
@@ -63,7 +64,7 @@ bauen darauf auf, sobald es gemergt ist.
 ### Später (Ideen-Speicher)
 
 - Passwort zurücksetzen per E-Mail, E-Mail-Bestätigung.
-- Profilseite und Konto löschen (DSGVO).
+- Profilseite mit Datenexport (Art. 20 DSGVO).
 - Hell/Dunkel-Umschalter.
 - Fehler-Monitoring und datenschutzfreundliche Statistik.
 - Mehrsprachigkeit (DE/EN), eigene Domain.
