@@ -1,0 +1,158 @@
+/*
+ * Design-Tokens – Website
+ * Einzige Quelle für Farben, Typografie, Abstände, Radien, Schatten und Bewegung.
+ * Komponenten verwenden ausschließlich diese Variablen, nie feste Farbwerte.
+ *
+ * Theme-Logik:
+ *  - ohne data-theme  → folgt der Systemeinstellung (prefers-color-scheme)
+ *  - data-theme="light" / "dark" auf <html> → erzwingt das jeweilige Theme
+ *
+ * Kontraste (WCAG 2.1) sind in docs/DESIGN.md dokumentiert; alle Textfarben ≥ 4.5:1.
+ */
+
+:root {
+  /* ---------- Farben: Hell (Standard) ---------- */
+  --color-bg:            #F5F7F6; /* Seitenhintergrund, leicht petrol getöntes Weiß */
+  --color-surface:       #FFFFFF; /* Karten, Eingabefelder, Navigation */
+  --color-surface-2:     #EBF0EF; /* abgesetzte Bereiche, Code, Hover-Flächen */
+  --color-text:          #132120; /* Fließtext und Überschriften */
+  --color-text-muted:    #4E5E5B; /* Nebentexte, Metadaten */
+  --color-border:        #CFD9D7; /* dekorative Linien, Trenner */
+  --color-border-strong: #748784; /* Ränder von Bedienelementen (≥ 3:1) */
+
+  --color-accent:        #0B6A64; /* Petrol: Links, Primärbuttons, Fokus */
+  --color-accent-strong: #08504C; /* Hover/aktiv */
+  --color-accent-soft:   #DCEEEB; /* Hinterlegungen, ausgewählte Zustände */
+  --color-on-accent:     #FFFFFF; /* Text auf Akzentflächen */
+  --color-highlight:     #E9A23B; /* Bernstein: nur Dekor/Markierung, nie für Text */
+
+  --color-success:       #1D7A46;
+  --color-warning:       #94590A;
+  --color-danger:        #B8352A;
+
+  --color-focus-ring:    var(--color-accent);
+
+  /* ---------- Typografie ---------- */
+  --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body:    "Instrument Sans Variable", "Instrument Sans", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* Fluide Skala (Verhältnis ~1.25 mobil → ~1.333 Desktop), 360px–1280px Viewport */
+  --text-xs:   0.8125rem;                              /* 13px  Labels, Fußnoten */
+  --text-sm:   0.9375rem;                              /* 15px  Nebentext */
+  --text-base: 1.0625rem;                              /* 17px  Fließtext */
+  --text-lg:   clamp(1.1875rem, 1.12rem + 0.3vw, 1.375rem); /* 19–22px Lead */
+  --text-xl:   clamp(1.375rem, 1.25rem + 0.6vw, 1.75rem);   /* 22–28px H4 */
+  --text-2xl:  clamp(1.625rem, 1.4rem + 1vw, 2.25rem);      /* 26–36px H3 */
+  --text-3xl:  clamp(2rem, 1.6rem + 1.8vw, 3rem);           /* 32–48px H2 */
+  --text-4xl:  clamp(2.5rem, 1.8rem + 3.2vw, 4.5rem);       /* 40–72px H1 / Hero */
+
+  --leading-tight: 1.1;
+  --leading-snug:  1.3;
+  --leading-body:  1.6;
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold: 600;
+  --weight-bold:    700;
+
+  --tracking-tight: -0.02em; /* große Überschriften */
+  --tracking-label: 0.08em;  /* Versal-Labels */
+
+  --measure: 66ch; /* maximale Zeilenlänge für Fließtext */
+
+  /* ---------- Abstände (4px-Raster) ---------- */
+  --space-1:  0.25rem;  /*  4px */
+  --space-2:  0.5rem;   /*  8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-5:  1.5rem;   /* 24px */
+  --space-6:  2rem;     /* 32px */
+  --space-7:  3rem;     /* 48px */
+  --space-8:  4rem;     /* 64px */
+  --space-9:  6rem;     /* 96px */
+  --space-section: clamp(3rem, 2rem + 5vw, 7rem); /* Abstand zwischen Seitensektionen */
+
+  /* ---------- Layout ---------- */
+  --container-max:    72rem;  /* 1152px Inhaltsbreite */
+  --container-narrow: 44rem;  /*  704px Artikel/Text */
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem); /* seitlicher Rand, min. 16px */
+  /* Breakpoints (nur in Media Queries nutzbar, hier zur Dokumentation):
+     sm 40rem (640px) · md 48rem (768px) · lg 64rem (1024px) · xl 90rem (1440px)
+     Prüfbreiten laut ABNAHME.md: 375 / 768 / 1440px */
+
+  /* ---------- Formen ---------- */
+  --radius-sm:   4px;   /* Eingabefelder, Tags */
+  --radius-md:   8px;   /* Buttons */
+  --radius-lg:   14px;  /* Karten, Bilder */
+  --radius-pill: 999px; /* Badges */
+
+  --border-width: 1px;
+
+  --shadow-sm: 0 1px 2px rgb(19 33 32 / 0.06);
+  --shadow-md: 0 2px 4px rgb(19 33 32 / 0.05), 0 8px 24px rgb(19 33 32 / 0.07);
+  --shadow-lg: 0 4px 8px rgb(19 33 32 / 0.06), 0 20px 48px rgb(19 33 32 / 0.12);
+
+  /* ---------- Bewegung ---------- */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 360ms;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  color-scheme: light;
+}
+
+/* ---------- Farben: Dunkel ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg:            #0D1514;
+    --color-surface:       #142020;
+    --color-surface-2:     #1B2A29;
+    --color-text:          #E6EEEC;
+    --color-text-muted:    #9AAFAB;
+    --color-border:        #2A3B39;
+    --color-border-strong: #5F7774;
+    --color-accent:        #4CC3B8;
+    --color-accent-strong: #7DD8CF;
+    --color-accent-soft:   #163A37;
+    --color-on-accent:     #0D1514;
+    --color-highlight:     #F0B95A;
+    --color-success:       #5CC98A;
+    --color-warning:       #E8B04F;
+    --color-danger:        #F07D72;
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 2px 4px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.35);
+    --shadow-lg: 0 4px 8px rgb(0 0 0 / 0.3), 0 20px 48px rgb(0 0 0 / 0.5);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg:            #0D1514;
+  --color-surface:       #142020;
+  --color-surface-2:     #1B2A29;
+  --color-text:          #E6EEEC;
+  --color-text-muted:    #9AAFAB;
+  --color-border:        #2A3B39;
+  --color-border-strong: #5F7774;
+  --color-accent:        #4CC3B8;
+  --color-accent-strong: #7DD8CF;
+  --color-accent-soft:   #163A37;
+  --color-on-accent:     #0D1514;
+  --color-highlight:     #F0B95A;
+  --color-success:       #5CC98A;
+  --color-warning:       #E8B04F;
+  --color-danger:        #F07D72;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 2px 4px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.35);
+  --shadow-lg: 0 4px 8px rgb(0 0 0 / 0.3), 0 20px 48px rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}

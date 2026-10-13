@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Designsystem Vorschau</title>
+<!-- Google Fonts nur für die Vorschau. Auf der Live-Seite selbst hosten (DSGVO), siehe docs/DESIGN.md -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../src/styles/tokens.css">
+<link rel="stylesheet" href="../src/styles/base.css">
+<link rel="stylesheet" href="design-preview.css">
+</head>
+<body>
+<header class="pv-top">
+  <div class="container pv-top__inner">
+    <span class="pv-logo">website<span class="pv-logo__dot">.</span></span>
+    <button class="btn btn--secondary pv-theme" id="theme-toggle" type="button" aria-label="Theme wechseln">Theme: System</button>
+  </div>
+</header>
+
+<main>
+  <section class="section pv-hero">
+    <div class="container stack pv-hero__inner">
+      <span class="eyebrow">Designsystem · Version 0.1</span>
+      <h1>Klar gebaut, <mark>ruhig</mark> im Ton.</h1>
+      <p class="lead">Petrol als Leitfarbe, Bernstein als einziger Gegenpol, viel Weißraum und eine Schrift mit Charakter für Überschriften. Diese Seite zeigt alle Bausteine, aus denen die Website entsteht.</p>
+      <div class="pv-row">
+        <a class="btn btn--primary" href="#farben">Farben ansehen</a>
+        <a class="btn btn--secondary" href="#komponenten">Komponenten</a>
+        <a class="btn btn--ghost" href="#typo">Typografie</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pv-band" id="farben">
+    <div class="container stack">
+      <span class="eyebrow">Farben</span>
+      <h2>Palette</h2>
+      <p class="muted">Jede Farbe existiert als Token in hellem und dunklem Theme. Textfarben erreichen mindestens WCAG AA (4.5:1).</p>
+      <div class="pv-swatches">
+        <figure class="pv-sw"><span style="background:var(--color-bg)"></span><figcaption><b>bg</b><code>--color-bg</code></figcaption></figure>
+        <figure class="pv-sw"><span style="background:var(--color-surface)"></span><figcaption><b>surface</b><code>--color-surface</code></figcaption></figure>
+        <figure class="pv-sw"><span style="background:var(--color-surface-2)"></span><figcaption><b>surface-2</b><code>--color-surface-2</code></figcaption></figure>
+        <figure class="pv-sw"><span style="background:var(--color-text)"></span><figcaption><b>text</b><code>--color-text</code></figcaption></figure>
+        <figure class="pv-sw"><span style="background:var(--color-text-muted)"></span><figcaption><b>text-muted</b><code>--color-text-muted</code></figcaption></figure>
+        <figure class="pv-sw"><span style="background:var(--color-accent)"></span><figcaption><b>accent</b><code>--color-accent</code></figcaption></figure>
+        <figure class="pv-sw"><span style="background:var(--color-accent-soft)"></span><figcaption><b>accent-soft</b><code>--color-accent-soft</code></figcaption></figure>
+        <figure class="pv-sw"><span style="background:var(--color-highlight)"></span><figcaption><b>highlight</b><code>--color-highlight</code></figcaption></figure>
+        <figure class="pv-sw"><span style="background:var(--color-success)"></span><figcaption><b>success</b><code>--color-success</code></figcaption></figure>
+        <figure class="pv-sw"><span style="background:var(--color-warning)"></span><figcaption><b>warning</b><code>--color-warning</code></figcaption></figure>
+        <figure class="pv-sw"><span style="background:var(--color-danger)"></span><figcaption><b>danger</b><code>--color-danger</code></figcaption></figure>
+        <figure class="pv-sw"><span style="background:var(--color-border-strong)"></span><figcaption><b>border-strong</b><code>--color-border-strong</code></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="typo">
+    <div class="container stack">
+      <span class="eyebrow">Typografie</span>
+      <h2>Schriften und Skala</h2>
+      <div class="pv-fonts">
+        <div class="card stack">
+          <span class="eyebrow">Display</span>
+          <p class="pv-specimen" style="font-family:var(--font-display)">Bricolage Grotesque</p>
+          <p class="muted text-sm">Überschriften, Hero, Zahlen mit Gewicht. Fett, eng gesetzt.</p>
+        </div>
+        <div class="card stack">
+          <span class="eyebrow">Text</span>
+          <p class="pv-specimen" style="font-family:var(--font-body)">Instrument Sans</p>
+          <p class="muted text-sm">Fließtext, Navigation, Buttons, Formulare. 17px Grundgröße.</p>
+        </div>
+        <div class="card stack">
+          <span class="eyebrow">Mono</span>
+          <p class="pv-specimen" style="font-family:var(--font-mono)">JetBrains Mono</p>
+          <p class="muted text-sm">Code, technische Werte, Versionsnummern.</p>
+        </div>
+      </div>
+      <div class="pv-scale">
+        <div class="pv-scale__row"><code>4xl · 40–72px</code><span style="font:var(--weight-bold) var(--text-4xl)/1.1 var(--font-display);letter-spacing:var(--tracking-tight)">Überschrift 1</span></div>
+        <div class="pv-scale__row"><code>3xl · 32–48px</code><span style="font:var(--weight-bold) var(--text-3xl)/1.1 var(--font-display);letter-spacing:var(--tracking-tight)">Überschrift 2</span></div>
+        <div class="pv-scale__row"><code>2xl · 26–36px</code><span style="font:var(--weight-bold) var(--text-2xl)/1.3 var(--font-display)">Überschrift 3</span></div>
+        <div class="pv-scale__row"><code>xl · 22–28px</code><span style="font:var(--weight-semibold) var(--text-xl)/1.3 var(--font-display)">Überschrift 4</span></div>
+        <div class="pv-scale__row"><code>lg · 19–22px</code><span style="font-size:var(--text-lg)">Einleitungstext für Abschnitte</span></div>
+        <div class="pv-scale__row"><code>base · 17px</code><span>Fließtext mit 1.6 Zeilenhöhe und maximal 66 Zeichen pro Zeile.</span></div>
+        <div class="pv-scale__row"><code>sm · 15px</code><span class="text-sm">Nebentext, Bildunterschriften</span></div>
+        <div class="pv-scale__row"><code>xs · 13px</code><span class="eyebrow">Label in Versalien</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pv-band" id="komponenten">
+    <div class="container stack">
+      <span class="eyebrow">Komponenten</span>
+      <h2>Grundbausteine</h2>
+      <div class="pv-components">
+        <article class="card stack">
+          <span class="badge">Neu</span>
+          <h3>Karte mit Rahmen</h3>
+          <p class="muted">Standard für Inhalte in Rastern. Rahmen statt Schatten, damit die Seite ruhig bleibt.</p>
+          <a href="#komponenten">Mehr lesen</a>
+        </article>
+        <article class="card card--raised stack">
+          <span class="badge">Hervorgehoben</span>
+          <h3>Karte mit Schatten</h3>
+          <p class="muted">Nur für das eine Element, das herausstehen soll, etwa ein Angebot oder ein Hinweis.</p>
+          <button class="btn btn--primary" type="button">Aktion</button>
+        </article>
+        <form class="card stack" onsubmit="event.preventDefault()">
+          <h3>Formular</h3>
+          <div class="field">
+            <label for="pv-name">Name</label>
+            <input class="input" id="pv-name" type="text" placeholder="Max Mustermann">
+          </div>
+          <div class="field">
+            <label for="pv-mail">E-Mail</label>
+            <input class="input" id="pv-mail" type="email" value="max@" aria-invalid="true">
+            <span class="field__error">Bitte eine vollständige E-Mail-Adresse eingeben.</span>
+          </div>
+          <button class="btn btn--primary" type="submit">Absenden</button>
+        </form>
+      </div>
+      <div class="pv-row">
+        <span class="pv-status" style="--c:var(--color-success)">Erfolgreich gespeichert</span>
+        <span class="pv-status" style="--c:var(--color-warning)">Entwurf, noch nicht veröffentlicht</span>
+        <span class="pv-status" style="--c:var(--color-danger)">Verbindung fehlgeschlagen</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="raum">
+    <div class="container stack">
+      <span class="eyebrow">Abstände und Formen</span>
+      <h2>4px-Raster</h2>
+      <div class="pv-spaces">
+        <div><span style="width:var(--space-1)"></span><code>1 · 4</code></div>
+        <div><span style="width:var(--space-2)"></span><code>2 · 8</code></div>
+        <div><span style="width:var(--space-3)"></span><code>3 · 12</code></div>
+        <div><span style="width:var(--space-4)"></span><code>4 · 16</code></div>
+        <div><span style="width:var(--space-5)"></span><code>5 · 24</code></div>
+        <div><span style="width:var(--space-6)"></span><code>6 · 32</code></div>
+        <div><span style="width:var(--space-7)"></span><code>7 · 48</code></div>
+        <div><span style="width:var(--space-8)"></span><code>8 · 64</code></div>
+        <div><span style="width:var(--space-9)"></span><code>9 · 96</code></div>
+      </div>
+      <div class="pv-radii">
+        <div style="border-radius:var(--radius-sm)"><code>sm · 4</code></div>
+        <div style="border-radius:var(--radius-md)"><code>md · 8</code></div>
+        <div style="border-radius:var(--radius-lg)"><code>lg · 14</code></div>
+        <div style="border-radius:var(--radius-pill)"><code>pill</code></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pv-foot">
+  <div class="container"><p class="text-sm muted">Quelle: <code>src/styles/tokens.css</code> und <code>src/styles/base.css</code>. Regeln in <code>docs/DESIGN.md</code>.</p></div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    var order = ['system', 'light', 'dark'];
+    var labels = { system: 'Theme: System', light: 'Theme: Hell', dark: 'Theme: Dunkel' };
+    var i = 0;
+    btn.addEventListener('click', function () {
+      i = (i + 1) % order.length;
+      var t = order[i];
+      if (t === 'system') document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', t);
+      btn.textContent = labels[t];
+    });
+  })();
+</script>
+</body>
+</html>
