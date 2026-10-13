@@ -12,3 +12,4 @@ veröffentlichte Version bekommt einen Git-Tag `vX.Y.Z` und ein GitHub-Release.
 
 ### Hinzugefügt
 - Versionsverlauf, Abnahmekriterien und Pull-Request-Vorlage für die Qualitätssicherung.
+- Abnahmekriterien für die Web-App: Tests, Datenbank-Migrationen, Anmeldung und Autorisierung, Datenschutz (DSGVO).
