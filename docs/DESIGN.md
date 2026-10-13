@@ -139,7 +139,7 @@ Zahlen in Tabellen und Kennzahlen mit `font-variant-numeric: tabular-nums` (`.nu
 | Badge | `.badge` + `--accent`, `--success`, `--warning`, `--danger`, `--info` | |
 | Panel | `.card`, `.card--raised`, `.card__header` | |
 | Kennzahl | `.stat`, `.stat__value`, `.stat__delta--up/--down` | |
-| Tabelle | `.table-wrap`, `.table`, `.num` | Zeilen-Hover, `aria-selected="true"` |
+| Tabelle | `.table-wrap`, `.table`, `.num` | Zeilen-Hover, `aria-selected="true"`; `.table-wrap` immer mit `role="region"`, `aria-label` (Tabellentitel) und `tabindex="0"`, damit die horizontal scrollbare Tabelle per Tastatur erreichbar ist |
 | Navigation | `.nav-item` | hover, `aria-current="page"` |
 | Leer / Laden | `.empty`, `.skeleton` | |
 | Sonstiges | `.avatar`, `.divider`, `.visually-hidden`, `.stack`, `.cluster` | |

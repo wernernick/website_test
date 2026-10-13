@@ -267,6 +267,7 @@ mark {
 
 /* ---------- Tabelle ---------- */
 .table-wrap { overflow-x: auto; border: var(--border-width) solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+.table-wrap:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; border-radius: var(--radius-lg); }
 .table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
 .table th {
   text-align: left; white-space: nowrap;
