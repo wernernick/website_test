@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Designsystem Vorschau</title>
+<!-- Google Fonts nur für die Vorschau. In der App selbst hosten (DSGVO), siehe docs/DESIGN.md -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../src/lib/styles/tokens.css">
+<link rel="stylesheet" href="../src/lib/styles/base.css">
+<link rel="stylesheet" href="design-preview.css">
+</head>
+<body>
+<header class="pv-top">
+  <div class="pv-wrap pv-top__inner">
+    <span class="app-brand">Designsystem<span class="pv-dot">.</span></span>
+    <nav class="pv-jump" aria-label="Abschnitte">
+      <a href="#dashboard">Dashboard</a>
+      <a href="#anmeldung">Anmeldung</a>
+      <a href="#formulare">Formulare</a>
+      <a href="#grundlagen">Grundlagen</a>
+    </nav>
+    <button class="btn btn--secondary btn--sm" id="theme-toggle" type="button">Theme: System</button>
+  </div>
+</header>
+
+<main class="pv-wrap pv-main">
+  <section class="pv-intro stack">
+    <span class="eyebrow">Web-App · Designsystem 0.2</span>
+    <h1 class="display-2">Klar gebaut, <mark>ruhig</mark> im Ton.</h1>
+    <p class="lead">Petrol führt durch die Bedienung, Bernstein markiert, alles andere bleibt zurückhaltend. Dichte Tabellen und Formulare in der App, mehr Luft auf Landingpage und Anmeldung.</p>
+  </section>
+
+  <!-- Dashboard -->
+  <section class="pv-section stack" id="dashboard">
+    <div class="pv-head"><span class="label-caps">Muster</span><h2 class="pv-h2">App-Bereich mit Seitenleiste</h2><p class="muted text-sm">Beispieldaten. Die Kernfunktion der App steht noch nicht fest; die Struktur passt für Listen, Einträge und Kennzahlen.</p></div>
+    <div class="pv-frame">
+      <div class="app-shell pv-shell">
+        <header class="app-topbar">
+          <button class="btn btn--ghost btn--sm app-menu-btn" type="button" aria-label="Menü öffnen"><svg class="pv-ic" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14"/></svg></button>
+          <a class="app-brand" href="#dashboard">app<span class="pv-dot">.</span></a>
+          <div class="pv-search"><label class="visually-hidden" for="pv-search">Suchen</label><input class="input" id="pv-search" type="search" placeholder="Suchen …"></div>
+          <span class="avatar" aria-label="Angemeldet als Mira Schulz">MS</span>
+        </header>
+        <nav class="app-sidebar" aria-label="Hauptnavigation">
+          <a class="nav-item" href="#dashboard" aria-current="page"><svg class="pv-ic" viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="11" y="3" width="6" height="6" rx="1.5"/><rect x="3" y="11" width="6" height="6" rx="1.5"/><rect x="11" y="11" width="6" height="6" rx="1.5"/></svg>Übersicht</a>
+          <a class="nav-item" href="#dashboard"><svg class="pv-ic" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 5h12M4 10h12M4 15h8"/></svg>Einträge</a>
+          <a class="nav-item" href="#dashboard"><svg class="pv-ic" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="7" r="3"/><path d="M4 17c1-3 3.5-4.5 6-4.5s5 1.5 6 4.5"/></svg>Team</a>
+          <a class="nav-item" href="#dashboard"><svg class="pv-ic" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="2.5"/><path d="M10 2.5v2M10 15.5v2M2.5 10h2M15.5 10h2M4.7 4.7l1.4 1.4M13.9 13.9l1.4 1.4M4.7 15.3l1.4-1.4M13.9 6.1l1.4-1.4"/></svg>Einstellungen</a>
+        </nav>
+        <div class="app-main">
+          <div class="app-main__inner">
+            <div class="page-header">
+              <div><h1 class="page-title">Übersicht</h1><p class="muted text-sm">Stand heute, 13. Oktober</p></div>
+              <div class="cluster"><button class="btn btn--secondary" type="button">Exportieren</button><button class="btn btn--primary" type="button">Neuer Eintrag</button></div>
+            </div>
+            <div class="pv-stats">
+              <div class="card stat"><span class="label-caps">Einträge</span><span class="stat__value">1.284</span><span class="stat__delta stat__delta--up">+12 % zur Vorwoche</span></div>
+              <div class="card stat"><span class="label-caps">Offen</span><span class="stat__value">37</span><span class="stat__delta stat__delta--down">+5 seit gestern</span></div>
+              <div class="card stat"><span class="label-caps">Erledigt diese Woche</span><span class="stat__value">96</span><span class="stat__delta stat__delta--up">+18 %</span></div>
+            </div>
+            <div class="table-wrap" role="region" aria-label="Letzte Einträge" tabindex="0">
+              <table class="table">
+                <thead><tr><th>Eintrag</th><th>Status</th><th>Verantwortlich</th><th data-align="end">Geändert</th></tr></thead>
+                <tbody>
+                  <tr><td><b>Angebot Stadtwerke</b></td><td><span class="badge badge--success">Erledigt</span></td><td>Lena Hoffmann</td><td class="num">12.10.</td></tr>
+                  <tr aria-selected="true"><td><b>Quartalsbericht Q3</b></td><td><span class="badge badge--info">In Arbeit</span></td><td>Mira Schulz</td><td class="num">13.10.</td></tr>
+                  <tr><td><b>Vertrag Lieferant</b></td><td><span class="badge badge--warning">Wartet</span></td><td>Jonas Krüger</td><td class="num">09.10.</td></tr>
+                  <tr><td><b>Rechnung 2026-118</b></td><td><span class="badge badge--danger">Überfällig</span></td><td>Lena Hoffmann</td><td class="num">01.10.</td></tr>
+                  <tr><td><b>Onboarding Checkliste</b></td><td><span class="badge">Entwurf</span></td><td>Jonas Krüger</td><td class="num">28.09.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Anmeldung -->
+  <section class="pv-section stack" id="anmeldung">
+    <div class="pv-head"><span class="label-caps">Muster</span><h2 class="pv-h2">Anmeldung und Registrierung</h2><p class="muted text-sm">Eine Spalte, große Felder, Fehlermeldungen direkt am Feld und zusätzlich oben als Zusammenfassung.</p></div>
+    <div class="pv-auth">
+      <div class="pv-frame pv-frame--auth">
+        <form class="auth-card" onsubmit="event.preventDefault()">
+          <div class="stack" style="gap:var(--space-2)">
+            <span class="app-brand">app<span class="pv-dot">.</span></span>
+            <h1 class="display-2" style="font-size:var(--text-2xl)">Willkommen zurück</h1>
+            <p class="muted text-sm">Melde dich mit deiner E-Mail-Adresse an.</p>
+          </div>
+          <div class="form">
+            <div class="field"><label class="field__label" for="pv-l-mail">E-Mail</label><input class="input input--lg" id="pv-l-mail" type="email" autocomplete="email" value="mira@beispiel.de"></div>
+            <div class="field">
+              <div class="pv-between"><label class="field__label" for="pv-l-pw">Passwort</label><a class="text-sm" href="#anmeldung">Vergessen?</a></div>
+              <input class="input input--lg" id="pv-l-pw" type="password" autocomplete="current-password" value="geheimespasswort">
+            </div>
+            <label class="check" for="pv-l-keep"><input id="pv-l-keep" type="checkbox" checked> Angemeldet bleiben</label>
+            <button class="btn btn--primary btn--lg btn--block" type="submit">Anmelden</button>
+          </div>
+          <p class="text-sm muted" style="text-align:center;margin-inline:auto">Noch kein Konto? <a href="#anmeldung">Registrieren</a></p>
+        </form>
+      </div>
+      <div class="pv-frame pv-frame--auth">
+        <form class="auth-card" onsubmit="event.preventDefault()">
+          <div class="stack" style="gap:var(--space-2)">
+            <span class="app-brand">app<span class="pv-dot">.</span></span>
+            <h1 class="display-2" style="font-size:var(--text-2xl)">Konto erstellen</h1>
+          </div>
+          <div class="alert alert--danger" role="alert"><div><strong>Zwei Angaben fehlen noch</strong><p>Bitte prüfe die markierten Felder.</p></div></div>
+          <div class="form">
+            <div class="field"><label class="field__label" for="pv-r-name">Name <span class="optional">(optional)</span></label><input class="input input--lg" id="pv-r-name" type="text" autocomplete="name" placeholder="Vor- und Nachname"></div>
+            <div class="field"><label class="field__label" for="pv-r-mail">E-Mail</label><input class="input input--lg" id="pv-r-mail" type="email" value="mira@" aria-invalid="true" aria-describedby="pv-r-mail-err"><span class="field__error" id="pv-r-mail-err">Bitte eine vollständige E-Mail-Adresse eingeben, z. B. name@beispiel.de.</span></div>
+            <div class="field"><label class="field__label" for="pv-r-pw">Passwort</label><input class="input input--lg" id="pv-r-pw" type="password" value="kurz" aria-invalid="true" aria-describedby="pv-r-pw-err"><span class="field__error" id="pv-r-pw-err">Mindestens 12 Zeichen. Noch 8 Zeichen.</span></div>
+            <button class="btn btn--primary btn--lg btn--block" type="submit" aria-busy="true">Konto wird erstellt</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulare -->
+  <section class="pv-section stack" id="formulare">
+    <div class="pv-head"><span class="label-caps">Bausteine</span><h2 class="pv-h2">Bedienelemente und Zustände</h2></div>
+    <div class="pv-grid">
+      <div class="card stack">
+        <h3>Buttons</h3>
+        <div class="cluster"><button class="btn btn--primary" type="button">Speichern</button><button class="btn btn--secondary" type="button">Abbrechen</button><button class="btn btn--ghost" type="button">Mehr</button></div>
+        <div class="cluster"><button class="btn btn--danger" type="button">Löschen</button><button class="btn btn--primary" type="button" disabled>Deaktiviert</button><button class="btn btn--secondary" type="button" aria-busy="true">Lädt</button></div>
+        <div class="cluster"><button class="btn btn--primary btn--sm" type="button">Klein</button><button class="btn btn--primary" type="button">Standard</button><button class="btn btn--primary btn--lg" type="button">Groß</button></div>
+      </div>
+      <div class="card stack">
+        <h3>Eingabefelder</h3>
+        <div class="field"><label class="field__label" for="pv-f-title">Titel</label><input class="input" id="pv-f-title" type="text" value="Quartalsbericht Q3"><span class="field__hint">Wird in der Liste angezeigt.</span></div>
+        <div class="field"><label class="field__label" for="pv-f-status">Status</label><select class="select" id="pv-f-status"><option>In Arbeit</option><option>Wartet</option><option>Erledigt</option></select></div>
+        <div class="field"><label class="field__label" for="pv-f-id">Kennung</label><input class="input" id="pv-f-id" type="text" value="E-2026-0412" disabled></div>
+      </div>
+      <div class="card stack">
+        <h3>Hinweise</h3>
+        <div class="alert alert--success" role="status"><div><strong>Gespeichert</strong><p>Der Eintrag wurde aktualisiert.</p></div></div>
+        <div class="alert alert--warning"><div><strong>Ungespeicherte Änderungen</strong><p>Verlässt du die Seite, gehen sie verloren.</p></div></div>
+        <div class="alert alert--info"><div><strong>Neue Funktion</strong><p>Einträge lassen sich jetzt exportieren.</p></div></div>
+      </div>
+      <div class="card stack">
+        <h3>Leer und Laden</h3>
+        <div class="empty"><h3>Noch keine Einträge</h3><p class="text-sm">Lege deinen ersten Eintrag an, er erscheint dann hier.</p><button class="btn btn--primary btn--sm" type="button">Neuer Eintrag</button></div>
+        <div class="stack" style="gap:var(--space-2)"><span class="skeleton" style="width:60%"></span><span class="skeleton"></span><span class="skeleton" style="width:80%"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grundlagen -->
+  <section class="pv-section stack" id="grundlagen">
+    <div class="pv-head"><span class="label-caps">Grundlagen</span><h2 class="pv-h2">Farben, Schrift, Raster</h2><p class="muted text-sm">Alle Werte stehen in <code>src/lib/styles/tokens.css</code>, in hellem und dunklem Theme. Textfarben erreichen mindestens WCAG AA.</p></div>
+    <div class="pv-swatches">
+      <figure class="pv-sw"><span style="background:var(--color-bg)"></span><figcaption><b>bg</b><code>--color-bg</code></figcaption></figure>
+      <figure class="pv-sw"><span style="background:var(--color-surface)"></span><figcaption><b>surface</b><code>--color-surface</code></figcaption></figure>
+      <figure class="pv-sw"><span style="background:var(--color-surface-2)"></span><figcaption><b>surface-2</b><code>--color-surface-2</code></figcaption></figure>
+      <figure class="pv-sw"><span style="background:var(--color-text)"></span><figcaption><b>text</b><code>--color-text</code></figcaption></figure>
+      <figure class="pv-sw"><span style="background:var(--color-text-muted)"></span><figcaption><b>text-muted</b><code>--color-text-muted</code></figcaption></figure>
+      <figure class="pv-sw"><span style="background:var(--color-accent)"></span><figcaption><b>accent</b><code>--color-accent</code></figcaption></figure>
+      <figure class="pv-sw"><span style="background:var(--color-accent-soft)"></span><figcaption><b>accent-soft</b><code>--color-accent-soft</code></figcaption></figure>
+      <figure class="pv-sw"><span style="background:var(--color-highlight)"></span><figcaption><b>highlight</b><code>--color-highlight</code></figcaption></figure>
+      <figure class="pv-sw"><span style="background:var(--color-success)"></span><figcaption><b>success</b><code>--color-success</code></figcaption></figure>
+      <figure class="pv-sw"><span style="background:var(--color-warning)"></span><figcaption><b>warning</b><code>--color-warning</code></figcaption></figure>
+      <figure class="pv-sw"><span style="background:var(--color-danger)"></span><figcaption><b>danger</b><code>--color-danger</code></figcaption></figure>
+      <figure class="pv-sw"><span style="background:var(--color-info)"></span><figcaption><b>info</b><code>--color-info</code></figcaption></figure>
+    </div>
+    <div class="pv-scale">
+      <div class="pv-scale__row"><code>4xl · 40–72 · Hero</code><span class="display-1">Überblick behalten</span></div>
+      <div class="pv-scale__row"><code>2xl · 26–36 · Kennzahl</code><span class="stat__value">1.284</span></div>
+      <div class="pv-scale__row"><code>xl · 22 · Seitentitel</code><span class="page-title">Übersicht</span></div>
+      <div class="pv-scale__row"><code>lg · 18 · Abschnitt</code><span class="section-title">Letzte Einträge</span></div>
+      <div class="pv-scale__row"><code>base · 16 · Text, Felder</code><span>Fließtext und Eingaben, 16px verhindert das Zoomen auf iOS.</span></div>
+      <div class="pv-scale__row"><code>sm · 14 · Tabellen, Buttons</code><span class="text-sm">Tabelleninhalte, Navigation, Buttons</span></div>
+      <div class="pv-scale__row"><code>xs · 12 · Labels</code><span class="label-caps">Tabellenkopf in Versalien</span></div>
+    </div>
+  </section>
+</main>
+
+<footer class="pv-foot">
+  <div class="pv-wrap"><p class="text-sm muted">Quelle: <code>src/lib/styles/tokens.css</code> und <code>src/lib/styles/base.css</code>. Regeln in <code>docs/DESIGN.md</code>.</p></div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    var order = ['system', 'light', 'dark'];
+    var labels = { system: 'Theme: System', light: 'Theme: Hell', dark: 'Theme: Dunkel' };
+    var i = 0;
+    btn.addEventListener('click', function () {
+      i = (i + 1) % order.length;
+      var t = order[i];
+      if (t === 'system') document.documentElement.removeAttribute('data-theme');
+      else document.documentElement.setAttribute('data-theme', t);
+      btn.textContent = labels[t];
+    });
+  })();
+</script>
+</body>
+</html>
