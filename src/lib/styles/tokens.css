@@ -29,7 +29,7 @@
   --color-highlight:     #E9A23B; /* Bernstein: nur Dekor/Markierung, nie für Text */
 
   /* Status: Vordergrund (Text/Icon) und weiche Fläche dazu */
-  --color-success:       #1D7A46;
+  --color-success:       #1A7241;
   --color-success-soft:  #E1F2E8;
   --color-warning:       #94590A;
   --color-warning-soft:  #FBEFD9;

@@ -70,7 +70,7 @@ Svelte-Komponenten in `src/lib/components/` verwenden die Klassen aus `base.css`
 | `--color-accent-soft` | `#DCEEEB` | `#163A37` | aktive Navigation, ausgewählte Zeile |
 | `--color-on-accent` | `#FFFFFF` | `#0D1514` | Text auf Akzent- und Gefahrflächen |
 | `--color-highlight` | `#E9A23B` | `#F0B95A` | Markierung, Dekor |
-| `--color-success` / `-soft` | `#1D7A46` / `#E1F2E8` | `#5CC98A` / `#143222` | Erfolg |
+| `--color-success` / `-soft` | `#1A7241` / `#E1F2E8` | `#5CC98A` / `#143222` | Erfolg |
 | `--color-warning` / `-soft` | `#94590A` / `#FBEFD9` | `#E8B04F` / `#3A2C12` | Warnung |
 | `--color-danger` / `-soft` | `#B8352A` / `#FBE5E2` | `#F07D72` / `#3E1E1B` | Fehler, Löschen |
 | `--color-info` / `-soft` | `#2459B8` / `#E3ECFA` | `#7FA8F0` / `#1A2A45` | Hinweis |
@@ -84,7 +84,7 @@ Svelte-Komponenten in `src/lib/components/` verwenden die Klassen aus `base.css`
 | accent auf bg / surface | 6.0 / 6.4 | 8.6 / 7.8 |
 | on-accent auf accent | 6.4 | 8.6 |
 | accent-strong auf accent-soft | 7.7 | 7.4 |
-| success auf success-soft | 4.6 | 6.7 |
+| success auf success-soft / accent-soft | 5.1 / 5.0 | 6.7 / 7.0 |
 | warning auf warning-soft | 5.0 | 6.9 |
 | danger auf danger-soft | 4.9 | 5.6 |
 | info auf info-soft | 5.5 | 6.0 |
