@@ -1,0 +1,208 @@
+/*
+ * Design-Tokens – Web-App
+ * Einzige Quelle für Farben, Typografie, Abstände, Größen, Ebenen und Bewegung.
+ * Komponenten verwenden ausschließlich diese Variablen, nie feste Farbwerte.
+ *
+ * Theme-Logik:
+ *  - ohne data-theme  → folgt der Systemeinstellung (prefers-color-scheme)
+ *  - data-theme="light" / "dark" auf <html> → erzwingt das jeweilige Theme
+ *
+ * Kontraste (WCAG 2.2) sind in docs/DESIGN.md dokumentiert; alle Textfarben ≥ 4.5:1.
+ */
+
+:root {
+  /* ---------- Farben: Hell (Standard) ---------- */
+  --color-bg:            #F5F7F6; /* App-Hintergrund, leicht petrol getöntes Weiß */
+  --color-surface:       #FFFFFF; /* Panels, Karten, Eingabefelder, Seitenleiste */
+  --color-surface-2:     #EBF0EF; /* abgesetzte Flächen, Tabellenkopf, Hover */
+  --color-surface-3:     #FFFFFF; /* schwebende Ebenen: Menüs, Dialoge, Toasts */
+  --color-text:          #132120; /* Text und Überschriften */
+  --color-text-muted:    #4E5E5B; /* Nebentext, Metadaten, Platzhalter */
+  --color-border:        #CFD9D7; /* Trenner, Kartenränder */
+  --color-border-strong: #748784; /* Ränder von Bedienelementen (≥ 3:1) */
+  --color-overlay:       rgb(13 21 20 / 0.45); /* Abdunklung hinter Dialogen */
+
+  --color-accent:        #0B6A64; /* Petrol: Primäraktion, Links, Fokus, aktive Navigation */
+  --color-accent-strong: #08504C; /* Hover/aktiv */
+  --color-accent-soft:   #DCEEEB; /* ausgewählte Zeile, aktiver Navigationspunkt */
+  --color-on-accent:     #FFFFFF; /* Text auf Akzentflächen */
+  --color-highlight:     #E9A23B; /* Bernstein: nur Dekor/Markierung, nie für Text */
+
+  /* Status: Vordergrund (Text/Icon) und weiche Fläche dazu */
+  --color-success:       #1A7241;
+  --color-success-soft:  #E1F2E8;
+  --color-warning:       #94590A;
+  --color-warning-soft:  #FBEFD9;
+  --color-danger:        #B8352A;
+  --color-danger-soft:   #FBE5E2;
+  --color-info:          #2459B8;
+  --color-info-soft:     #E3ECFA;
+
+  --color-focus-ring:    var(--color-accent);
+
+  /* ---------- Typografie ---------- */
+  /* Fontsource-Variable-Namen zuerst, siehe docs/DESIGN.md (Schriften selbst hosten) */
+  --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body:    "Instrument Sans Variable", "Instrument Sans", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* App-Skala: feste Größen für Bedienoberflächen, damit Tabellen und Formulare dicht bleiben */
+  --text-xs:   0.75rem;   /* 12px  Tabellenkopf, Labels in Versalien, Badges */
+  --text-sm:   0.875rem;  /* 14px  Tabellen, Nebentext, Buttons, Navigation */
+  --text-base: 1rem;      /* 16px  Fließtext, Eingabefelder (verhindert iOS-Zoom) */
+  --text-lg:   1.125rem;  /* 18px  Abschnittstitel in Panels */
+  --text-xl:   1.375rem;  /* 22px  Seitentitel in der App */
+  /* Marketing-Skala: fluide, nur für Landingpage und Anmeldeseiten */
+  --text-2xl:  clamp(1.625rem, 1.4rem + 1vw, 2.25rem);   /* 26–36px */
+  --text-3xl:  clamp(2rem, 1.6rem + 1.8vw, 3rem);        /* 32–48px */
+  --text-4xl:  clamp(2.5rem, 1.8rem + 3.2vw, 4.5rem);    /* 40–72px Hero */
+
+  --leading-tight: 1.1;
+  --leading-snug:  1.3;
+  --leading-body:  1.55;
+
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  --tracking-tight: -0.02em; /* große Überschriften */
+  --tracking-label: 0.06em;  /* Versal-Labels */
+
+  --measure: 66ch; /* maximale Zeilenlänge für Fließtext */
+
+  /* ---------- Abstände (4px-Raster) ---------- */
+  --space-1:  0.25rem;  /*  4px */
+  --space-2:  0.5rem;   /*  8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-5:  1.5rem;   /* 24px */
+  --space-6:  2rem;     /* 32px */
+  --space-7:  3rem;     /* 48px */
+  --space-8:  4rem;     /* 64px */
+  --space-9:  6rem;     /* 96px */
+  --space-section: clamp(3rem, 2rem + 5vw, 7rem); /* nur Landingpage */
+
+  /* ---------- Größen für Bedienelemente ---------- */
+  --control-h-sm: 2rem;    /* 32px  kompakte Aktionen in Tabellen */
+  --control-h-md: 2.5rem;  /* 40px  Standard */
+  --control-h-lg: 3rem;    /* 48px  Anmeldeformulare, Hero-Aktionen */
+  --icon-sm: 1rem;
+  --icon-md: 1.25rem;
+
+  /* ---------- App-Layout ---------- */
+  --sidebar-w:       15rem;  /* 240px Seitenleiste ab lg */
+  --topbar-h:        3.5rem; /* 56px  Kopfzeile */
+  --container-max:   72rem;  /* 1152px Inhaltsbreite Landingpage */
+  --content-max:     80rem;  /* 1280px Inhaltsbreite im App-Bereich */
+  --form-max:        28rem;  /* 448px Anmelde-/Einzelformulare */
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2rem); /* seitlicher Rand, min. 16px */
+  /* Breakpoints (nur in Media Queries nutzbar, hier zur Dokumentation):
+     sm 40rem (640px) · md 48rem (768px) · lg 64rem (1024px, Seitenleiste fest) · xl 90rem (1440px)
+     Prüfbreiten laut ABNAHME.md: 375 / 768 / 1440px */
+
+  /* ---------- Formen ---------- */
+  --radius-sm:   4px;   /* Checkboxen, Tags */
+  --radius-md:   8px;   /* Buttons, Eingabefelder, Navigationspunkte */
+  --radius-lg:   12px;  /* Karten, Panels, Dialoge */
+  --radius-pill: 999px; /* Badges, Avatare */
+
+  --border-width: 1px;
+
+  --shadow-sm: 0 1px 2px rgb(19 33 32 / 0.06);
+  --shadow-md: 0 2px 4px rgb(19 33 32 / 0.05), 0 8px 24px rgb(19 33 32 / 0.08);
+  --shadow-lg: 0 4px 8px rgb(19 33 32 / 0.06), 0 20px 48px rgb(19 33 32 / 0.14);
+
+  /* ---------- Ebenen (z-index) ---------- */
+  --z-sticky:   10;  /* Kopfzeile, Tabellenkopf */
+  --z-sidebar:  20;  /* mobile Seitenleiste */
+  --z-dropdown: 30;  /* Menüs, Auswahllisten */
+  --z-overlay:  40;  /* Abdunklung */
+  --z-dialog:   50;  /* Dialoge */
+  --z-toast:    60;  /* Benachrichtigungen */
+
+  /* ---------- Bewegung ---------- */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  color-scheme: light;
+}
+
+/* Grobe Zeiger (Touch): Bedienelemente mindestens 44px hoch */
+@media (pointer: coarse) {
+  :root {
+    --control-h-sm: 2.5rem;
+    --control-h-md: 2.75rem;
+  }
+}
+
+/* ---------- Farben: Dunkel ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg:            #0D1514;
+    --color-surface:       #142020;
+    --color-surface-2:     #1B2A29;
+    --color-surface-3:     #22312F;
+    --color-text:          #E6EEEC;
+    --color-text-muted:    #9AAFAB;
+    --color-border:        #2A3B39;
+    --color-border-strong: #5F7774;
+    --color-overlay:       rgb(0 0 0 / 0.6);
+    --color-accent:        #4CC3B8;
+    --color-accent-strong: #7DD8CF;
+    --color-accent-soft:   #163A37;
+    --color-on-accent:     #0D1514;
+    --color-highlight:     #F0B95A;
+    --color-success:       #5CC98A;
+    --color-success-soft:  #143222;
+    --color-warning:       #E8B04F;
+    --color-warning-soft:  #3A2C12;
+    --color-danger:        #F07D72;
+    --color-danger-soft:   #3E1E1B;
+    --color-info:          #7FA8F0;
+    --color-info-soft:     #1A2A45;
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 2px 4px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.35);
+    --shadow-lg: 0 4px 8px rgb(0 0 0 / 0.3), 0 20px 48px rgb(0 0 0 / 0.5);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg:            #0D1514;
+  --color-surface:       #142020;
+  --color-surface-2:     #1B2A29;
+  --color-surface-3:     #22312F;
+  --color-text:          #E6EEEC;
+  --color-text-muted:    #9AAFAB;
+  --color-border:        #2A3B39;
+  --color-border-strong: #5F7774;
+  --color-overlay:       rgb(0 0 0 / 0.6);
+  --color-accent:        #4CC3B8;
+  --color-accent-strong: #7DD8CF;
+  --color-accent-soft:   #163A37;
+  --color-on-accent:     #0D1514;
+  --color-highlight:     #F0B95A;
+  --color-success:       #5CC98A;
+  --color-success-soft:  #143222;
+  --color-warning:       #E8B04F;
+  --color-warning-soft:  #3A2C12;
+  --color-danger:        #F07D72;
+  --color-danger-soft:   #3E1E1B;
+  --color-info:          #7FA8F0;
+  --color-info-soft:     #1A2A45;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 2px 4px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.35);
+  --shadow-lg: 0 4px 8px rgb(0 0 0 / 0.3), 0 20px 48px rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}
