@@ -5,11 +5,11 @@
 </script>
 
 <header class="site-header">
-	<div class="container inner">
-		<a class="brand" href={resolve('/')}>{site.name}</a>
+	<div class="container site-header__inner">
+		<a class="app-brand" href={resolve('/')}>{site.name}</a>
 		<nav aria-label="Konto">
-			<ul>
-				<li><ButtonLink href={resolve('/login')} variant="secondary">Anmelden</ButtonLink></li>
+			<ul class="cluster">
+				<li><ButtonLink href={resolve('/login')} variant="ghost">Anmelden</ButtonLink></li>
 				<li><ButtonLink href={resolve('/registrieren')}>Registrieren</ButtonLink></li>
 			</ul>
 		</nav>
@@ -18,27 +18,22 @@
 
 <style>
 	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: var(--z-sticky);
+		background: var(--color-surface);
 		border-bottom: var(--border-width) solid var(--color-border);
 	}
 
-	.inner {
+	.site-header__inner {
 		display: flex;
-		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
 		gap: var(--space-3);
-		padding-block: var(--space-3);
-	}
-
-	.brand {
-		color: var(--color-text);
-		font-size: var(--font-size-lg);
-		font-weight: var(--font-weight-bold);
-		text-decoration: none;
+		min-height: var(--topbar-h);
 	}
 
 	ul {
-		display: flex;
 		gap: var(--space-2);
 		margin: 0;
 		padding: 0;

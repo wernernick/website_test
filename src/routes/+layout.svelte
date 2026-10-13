@@ -1,4 +1,7 @@
 <script lang="ts">
+	import '@fontsource-variable/bricolage-grotesque';
+	import '@fontsource-variable/instrument-sans';
+	import '@fontsource-variable/jetbrains-mono';
 	import '#lib/styles/tokens.css';
 	import '#lib/styles/base.css';
 	import favicon from '#lib/assets/favicon.svg';
@@ -13,22 +16,27 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
-<SiteHeader />
-<main id="inhalt" tabindex="-1">
-	{@render children()}
-</main>
-<SiteFooter />
+<div class="site">
+	<a class="skip-link btn btn--secondary" href="#inhalt">Zum Inhalt springen</a>
+	<SiteHeader />
+	<main id="inhalt" tabindex="-1">
+		{@render children()}
+	</main>
+	<SiteFooter />
+</div>
 
 <style>
+	.site {
+		min-height: 100dvh;
+		display: flex;
+		flex-direction: column;
+	}
+
 	.skip-link {
 		position: absolute;
 		top: var(--space-2);
 		left: var(--space-2);
-		z-index: 10;
-		padding: var(--space-2) var(--space-4);
-		background: var(--color-bg);
-		border-radius: var(--radius-md);
+		z-index: var(--z-toast);
 		transform: translateY(-200%);
 	}
 

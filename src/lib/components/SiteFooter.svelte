@@ -6,20 +6,14 @@
 
 <footer class="site-footer">
 	<div class="container">
-		<p>© {year} {site.name}</p>
+		<p class="text-sm muted">© {year} {site.name}</p>
 	</div>
 </footer>
 
 <style>
 	.site-footer {
 		margin-top: auto;
-		border-top: var(--border-width) solid var(--color-border);
-		color: var(--color-text-muted);
-		font-size: var(--font-size-sm);
-	}
-
-	p {
-		margin: 0;
 		padding-block: var(--space-6);
+		border-top: var(--border-width) solid var(--color-border);
 	}
 </style>

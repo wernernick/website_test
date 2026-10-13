@@ -11,11 +11,12 @@
 </svelte:head>
 
 <Hero
-	title="Willkommen bei {site.name}"
+	eyebrow="Willkommen"
+	title={site.name}
 	lead="{site.description} Lege jetzt ein kostenloses Konto an oder melde dich an, wenn du schon eins hast."
 >
 	{#snippet actions()}
-		<ButtonLink href={resolve('/registrieren')}>Kostenlos registrieren</ButtonLink>
-		<ButtonLink href={resolve('/login')} variant="secondary">Anmelden</ButtonLink>
+		<ButtonLink href={resolve('/registrieren')} size="lg">Kostenlos registrieren</ButtonLink>
+		<ButtonLink href={resolve('/login')} variant="secondary" size="lg">Anmelden</ButtonLink>
 	{/snippet}
 </Hero>

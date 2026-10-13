@@ -13,3 +13,7 @@ bun.lockb
 /ROADMAP.md
 /docs/
 /.github/pull_request_template.md
+
+# Design-Dateien, gepflegt vom Design-Thread
+/src/lib/styles/tokens.css
+/src/lib/styles/base.css
