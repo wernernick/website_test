@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  # Muss zu `base` in astro.config.mjs passen (GitHub-Pages-Unterpfad).
+  BASE_PATH: website_test
+
+jobs:
+  build:
+    name: Build, Format, Links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Abhängigkeiten installieren
+        run: npm ci
+
+      - name: Formatprüfung (Prettier)
+        run: npm run format:check
+
+      - name: Build
+        run: npm run build
+
+      # Die Seite liegt später unter /website_test/. Damit wurzelrelative Links
+      # offline aufgelöst werden, legen wir dist/ in denselben Unterordner.
+      - name: Link-Check vorbereiten
+        run: |
+          mkdir -p _linkcheck
+          cp -r dist "_linkcheck/${BASE_PATH}"
+
+      - name: Link-Check (offline)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --offline
+            --no-progress
+            --include-fragments
+            --root-dir ${{ github.workspace }}/_linkcheck
+            '_linkcheck/**/*.html'
+          fail: true
+
+      - name: Build-Ergebnis hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
