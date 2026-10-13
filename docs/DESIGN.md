@@ -1,6 +1,6 @@
 # Designkonzept
 
-Version 0.2 · Stand 2026-10-13 · gepflegt vom Design-Thread
+Version 0.3 · Stand 2026-10-13 · gepflegt vom Design-Thread
 
 Vorschau aller Bausteine und Muster: `docs/design-preview.html` im Browser öffnen (funktioniert direkt aus dem Repository, ohne Build).
 
@@ -143,10 +143,69 @@ Zahlen in Tabellen und Kennzahlen mit `font-variant-numeric: tabular-nums` (`.nu
 | Navigation | `.nav-item` | hover, `aria-current="page"` |
 | Leer / Laden | `.empty`, `.skeleton` | |
 | Sonstiges | `.avatar`, `.divider`, `.visually-hidden`, `.stack`, `.cluster` | |
+| Dialog | `<dialog class="dialog">` mit `.dialog__body`, `.dialog__title`, `.dialog__actions` | siehe Spezifikation unten |
+| Schublade | `<dialog class="drawer">` mit `.drawer__head`, `.drawer__nav` | siehe Spezifikation unten |
+| Toast | `.toast-region` > `.toast` + `--success`, `--danger`; `.toast__dot`, `.toast__msg` | |
+| Menü | `.menu`, `.menu__item`, `.menu__item--danger`, `.menu__sep` | hover, Fokus |
+| Gefahrenbereich | `.danger-zone` | |
+| Landingpage | `.site-header`, `.hero`, `.feature-grid`, `.feature` | |
+
+## Seitenentwürfe (v0.2.0)
+
+Alle Entwürfe sind in `docs/design-preview.html` als Muster zu sehen. Texte in eckigen Klammern hängen von der Kernfunktion ab.
+
+### Landingpage `/`
+- Kopfzeile (`.site-header`): Wortmarke links, rechts „Anmelden“ (`--ghost`) und „Kostenlos starten“ (`--primary`). Angemeldete Nutzer sehen stattdessen „Zur App“.
+- Hero (`.hero`, max. 46rem breit, linksbündig): Eyebrow, `.display-1` mit genau einem `<mark>`-Wort, `.lead` mit einem Satz Nutzen, zwei Aktionen (`--lg`): „Konto erstellen“ und eine sekundäre.
+- Drei Vorteile (`.feature-grid`), je Überschrift und ein Satz. Keine Icons nötig; die Petrol-Linie oben trägt die Gliederung.
+- Fußzeile: Impressum, Datenschutz, © Jahr.
+
+### Anmeldung `/anmelden` und Registrierung `/registrieren`
+- Layout `.auth-page` > `.auth-card`, Felder `--lg`, Button `--block --lg`.
+- Anmeldung: E-Mail, Passwort (mit „Vergessen?“ rechts neben dem Label, sobald Zurücksetzen existiert), „Angemeldet bleiben“, Link zur Registrierung.
+- Registrierung: Name (optional), E-Mail, Passwort mit Regel als `.field__hint` („Mindestens 12 Zeichen“), Link zur Anmeldung, Satz mit Link zur Datenschutzerklärung über dem Button.
+- Fehler: am Feld (`aria-invalid`, `.field__error`), bei Absenden zusätzlich `.alert--danger` mit `role="alert"` oben, Fokus auf das erste fehlerhafte Feld. Falsche Zugangsdaten nur oben und ohne Hinweis, ob die E-Mail existiert („E-Mail oder Passwort stimmen nicht.“).
+- Senden: Button `aria-busy="true"` + `disabled`, Text „Wird angemeldet“ bzw. „Konto wird erstellt“.
+- Autocomplete: `email`, `current-password` bzw. `new-password`, `name`.
+
+### Leeres Dashboard `/app` (erster Besuch)
+- App-Shell wie im Dashboard-Muster, Seitentitel „Willkommen, [Vorname]“ (ohne Namen: „Willkommen“).
+- Statt Kennzahlen und Tabelle ein großes `.empty`: was hier erscheinen wird, ein Satz Beruhigung, eine Primäraktion „[Ersten Eintrag] anlegen“.
+- Keine leeren Diagramme oder Nullen anzeigen.
+
+### Konto löschen (Einstellungen `/app/einstellungen`)
+- Ganz unten in den Einstellungen, abgesetzt als `.danger-zone`: Titel, ein Satz Folgen, Button `--danger` „Konto löschen …“ (Auslassungspunkte = es folgt eine Rückfrage).
+- Bestätigung im Dialog: Titel als Frage („Konto endgültig löschen?“), konkrete Folgen mit Zahl („alle 23 Einträge“), Eingabe der eigenen E-Mail-Adresse; der Löschen-Button bleibt deaktiviert, bis sie exakt übereinstimmt. Erstfokus auf „Abbrechen“.
+- Danach Abmeldung, Weiterleitung auf die Landingpage mit Toast „Dein Konto wurde gelöscht.“
+
+## Komponenten-Spezifikation (für die Umsetzung in Svelte)
+
+### Dialog
+- Natives `<dialog>` mit `showModal()`: Fokusfalle, Esc und Hintergrund-Sperre liefert der Browser.
+- `aria-labelledby` auf den Titel. Erstfokus: bei zerstörenden Dialogen „Abbrechen“, sonst das erste Feld.
+- Schließen: Esc, „Abbrechen“, Klick auf den Hintergrund (nicht bei Formularen mit Eingaben). Danach Fokus zurück auf das auslösende Element.
+- Aktionen rechts, Primär- bzw. Gefahraktion ganz rechts; unter 640px untereinander in voller Breite, Primäraktion oben.
+- Breite max. 28rem, Einblenden 200ms (`--duration-base`), bei reduzierter Bewegung ohne Animation.
+
+### Toast
+- Eine Region pro App (`.toast-region`, `role="status"`, `aria-live="polite"`), unten mittig auf Mobil, unten rechts ab 768px.
+- Nur für Rückmeldungen nach Aktionen des Nutzers, nie für Fehler, die eine Entscheidung brauchen (die gehören in ein `.alert` oder einen Dialog).
+- Dauer 5s, mit Aktion („Rückgängig“) 8s; pausiert bei Hover und Fokus. Max. 3 gleichzeitig, neue unten.
+- Text kurz und im Perfekt/Zustand: „Eintrag gelöscht“, „Änderungen gespeichert“.
+
+### Menü (z. B. Benutzermenü am Avatar)
+- Auslöser ist ein `<button>` mit `aria-haspopup="menu"` und `aria-expanded`.
+- Inhalt: Name und E-Mail oben, „Einstellungen“, Theme-Wahl (System/Hell/Dunkel, ab v0.3.0), Trenner, „Abmelden“ (`--danger`).
+- Tastatur: Pfeil hoch/runter bewegt, Enter/Leertaste wählt, Esc schließt und gibt den Fokus an den Auslöser zurück; Klick außerhalb schließt.
+
+### Mobile Navigation
+- Unter 1024px ist `.app-sidebar` ausgeblendet; `.app-menu-btn` in der Kopfzeile öffnet dieselben Navigationspunkte in `<dialog class="drawer">` von links.
+- Schließen per Esc, Klick daneben, Schließen-Button oder Auswahl eines Punkts. `aria-current="page"` wie in der Seitenleiste.
+- Einblenden 320ms (`--duration-slow`), bei reduzierter Bewegung ohne Animation.
 
 ## Offene Punkte
 
 - Logo und Name der App, sobald die Kernfunktion feststeht
 - Icon-Set (Vorschlag: Lucide, als Svelte-Paket, Strichstärke passend zur Vorschau)
-- Dialog, Menü/Dropdown, Toast und mobile Navigationsschublade als Svelte-Komponenten (mit Frontend)
-- Seitenentwürfe für Registrierung, Anmeldung und leeres Dashboard (v0.2.0)
+- Passwort zurücksetzen, E-Mail-Bestätigung (sobald geplant)
+- Inhalte der Landingpage, sobald die Kernfunktion feststeht

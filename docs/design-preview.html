@@ -17,8 +17,10 @@
   <div class="pv-wrap pv-top__inner">
     <span class="app-brand">Designsystem<span class="pv-dot">.</span></span>
     <nav class="pv-jump" aria-label="Abschnitte">
+      <a href="#landing">Landing</a>
       <a href="#dashboard">Dashboard</a>
       <a href="#anmeldung">Anmeldung</a>
+      <a href="#loeschen">Konto löschen</a>
       <a href="#formulare">Formulare</a>
       <a href="#grundlagen">Grundlagen</a>
     </nav>
@@ -28,7 +30,7 @@
 
 <main class="pv-wrap pv-main">
   <section class="pv-intro stack">
-    <span class="eyebrow">Web-App · Designsystem 0.2</span>
+    <span class="eyebrow">Web-App · Designsystem 0.3</span>
     <h1 class="display-2">Klar gebaut, <mark>ruhig</mark> im Ton.</h1>
     <p class="lead">Petrol führt durch die Bedienung, Bernstein markiert, alles andere bleibt zurückhaltend. Dichte Tabellen und Formulare in der App, mehr Luft auf Landingpage und Anmeldung.</p>
   </section>
@@ -120,6 +122,127 @@
     </div>
   </section>
 
+  <!-- Landingpage -->
+  <section class="pv-section stack" id="landing">
+    <div class="pv-head"><span class="label-caps">Entwurf v0.2</span><h2 class="pv-h2">Landingpage</h2><p class="muted text-sm">Eine Botschaft, eine Primäraktion, drei Vorteile. Texte sind Platzhalter, bis die Kernfunktion feststeht.</p></div>
+    <div class="pv-frame">
+      <div class="pv-landing">
+        <header class="site-header">
+          <span class="app-brand">app<span class="pv-dot">.</span></span>
+          <nav class="site-header__nav"><a class="btn btn--ghost btn--sm" href="#anmeldung">Anmelden</a><a class="btn btn--primary btn--sm" href="#anmeldung">Kostenlos starten</a></nav>
+        </header>
+        <div class="hero">
+          <span class="eyebrow">Neu</span>
+          <h1 class="display-1">Alles Wichtige an <mark>einem</mark> Ort.</h1>
+          <p class="lead">Ein Satz, der sagt, welches Problem die App löst und für wen. Wird ersetzt, sobald die Kernfunktion feststeht.</p>
+          <div class="cluster"><a class="btn btn--primary btn--lg" href="#anmeldung">Konto erstellen</a><a class="btn btn--secondary btn--lg" href="#dashboard">So sieht es aus</a></div>
+        </div>
+        <div class="feature-grid">
+          <div class="feature"><h3>Schnell eingerichtet</h3><p class="muted text-sm">Registrieren, anmelden, loslegen. Keine Installation.</p></div>
+          <div class="feature"><h3>Deine Daten bleiben bei dir</h3><p class="muted text-sm">Gehostet in der EU, Konto jederzeit vollständig löschbar.</p></div>
+          <div class="feature"><h3>Hell und dunkel</h3><p class="muted text-sm">Passt sich automatisch an dein Gerät an.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leeres Dashboard -->
+  <section class="pv-section stack" id="leer">
+    <div class="pv-head"><span class="label-caps">Entwurf v0.2</span><h2 class="pv-h2">Erster Besuch: leeres Dashboard</h2><p class="muted text-sm">Nach der Registrierung. Begrüßung mit Namen, ein klarer erster Schritt, keine leeren Diagramme.</p></div>
+    <div class="pv-frame">
+      <div class="app-shell pv-shell">
+        <header class="app-topbar">
+          <button class="btn btn--ghost btn--sm app-menu-btn" type="button" aria-label="Menü öffnen" data-open="pv-drawer"><svg class="pv-ic" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14"/></svg></button>
+          <span class="app-brand">app<span class="pv-dot">.</span></span>
+          <span class="avatar" style="margin-left:auto" aria-label="Angemeldet als Mira Schulz">MS</span>
+        </header>
+        <nav class="app-sidebar" aria-label="Hauptnavigation">
+          <a class="nav-item" href="#leer" aria-current="page">Übersicht</a>
+          <a class="nav-item" href="#leer">Einstellungen</a>
+        </nav>
+        <div class="app-main">
+          <div class="app-main__inner">
+            <div class="page-header"><div><h1 class="page-title">Willkommen, Mira</h1><p class="muted text-sm">Dein Konto ist bereit.</p></div></div>
+            <div class="empty pv-empty-lg">
+              <h3 class="section-title">Hier erscheinen deine Einträge</h3>
+              <p class="text-sm">Lege den ersten an. Du kannst ihn später jederzeit ändern oder löschen.</p>
+              <button class="btn btn--primary" type="button">Ersten Eintrag anlegen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Einstellungen / Konto löschen -->
+  <section class="pv-section stack" id="loeschen">
+    <div class="pv-head"><span class="label-caps">Entwurf v0.2</span><h2 class="pv-h2">Konto löschen</h2><p class="muted text-sm">Gefahrenbereich am Ende der Einstellungen, Bestätigung im Dialog mit Eingabe der E-Mail-Adresse. Der Button öffnet den echten Dialog.</p></div>
+    <div class="danger-zone">
+      <div><h3>Konto löschen</h3><p class="muted text-sm">Löscht dein Konto und alle Einträge endgültig. Das lässt sich nicht rückgängig machen.</p></div>
+      <button class="btn btn--danger" type="button" data-open="pv-delete">Konto löschen …</button>
+    </div>
+    <div class="pv-frame pv-frame--dialog" aria-hidden="true">
+      <div class="pv-backdrop"></div>
+      <div class="dialog pv-dialog-static">
+        <div class="dialog__body">
+          <h2 class="dialog__title">Konto endgültig löschen?</h2>
+          <p class="text-sm">Dein Konto und alle 1.284 Einträge werden sofort gelöscht. Das lässt sich nicht rückgängig machen.</p>
+          <div class="field"><label class="field__label">Zur Bestätigung deine E-Mail-Adresse eingeben</label><input class="input" type="email" placeholder="mira@beispiel.de" tabindex="-1"></div>
+        </div>
+        <div class="dialog__actions"><button class="btn btn--secondary" type="button" tabindex="-1">Abbrechen</button><button class="btn btn--danger" type="button" tabindex="-1" disabled>Konto löschen</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast, Menü, mobile Navigation -->
+  <section class="pv-section stack" id="overlays">
+    <div class="pv-head"><span class="label-caps">Komponenten v0.2</span><h2 class="pv-h2">Toast, Menü, mobile Navigation</h2></div>
+    <div class="pv-grid">
+      <div class="card stack">
+        <h3>Toast</h3>
+        <p class="muted text-sm">Kurze Rückmeldung nach einer Aktion, unten mittig (mobil) bzw. unten rechts. Verschwindet nach 5 Sekunden, mit „Rückgängig“ nach 8.</p>
+        <div class="toast toast--success pv-static"><span class="toast__dot"></span><span class="toast__msg">Eintrag gelöscht</span><button class="btn btn--ghost" type="button">Rückgängig</button></div>
+        <div class="toast toast--danger pv-static"><span class="toast__dot"></span><span class="toast__msg">Speichern fehlgeschlagen. Verbindung prüfen.</span></div>
+        <button class="btn btn--secondary btn--sm" type="button" id="pv-toast-btn" style="align-self:flex-start">Toast auslösen</button>
+      </div>
+      <div class="card stack">
+        <h3>Benutzermenü</h3>
+        <p class="muted text-sm">Öffnet am Avatar. Pfeiltasten bewegen, Esc schließt, Fokus geht zurück zum Avatar.</p>
+        <div class="menu" role="menu" aria-label="Benutzermenü">
+          <div class="pv-menu-head"><b class="text-sm">Mira Schulz</b><span class="muted text-sm">mira@beispiel.de</span></div>
+          <div class="menu__sep"></div>
+          <a class="menu__item" role="menuitem" href="#loeschen">Einstellungen</a>
+          <button class="menu__item" role="menuitem" type="button" id="pv-theme-menu">Design: System</button>
+          <div class="menu__sep"></div>
+          <button class="menu__item menu__item--danger" role="menuitem" type="button">Abmelden</button>
+        </div>
+      </div>
+      <div class="card stack">
+        <h3>Mobile Navigation</h3>
+        <p class="muted text-sm">Unter 1024px öffnet der Menü-Button die Seitenleiste als Schublade von links. Esc, Klick daneben oder Navigation schließen sie.</p>
+        <button class="btn btn--secondary btn--sm" type="button" data-open="pv-drawer" style="align-self:flex-start">Schublade öffnen</button>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="dialog" id="pv-delete" aria-labelledby="pv-delete-title">
+    <form method="dialog">
+      <div class="dialog__body">
+        <h2 class="dialog__title" id="pv-delete-title">Konto endgültig löschen?</h2>
+        <p class="text-sm">Dein Konto und alle Einträge werden sofort gelöscht. Das lässt sich nicht rückgängig machen.</p>
+        <div class="field"><label class="field__label" for="pv-delete-mail">Zur Bestätigung <b>mira@beispiel.de</b> eingeben</label><input class="input" id="pv-delete-mail" type="email" autocomplete="off"></div>
+      </div>
+      <div class="dialog__actions"><button class="btn btn--secondary" value="cancel" autofocus>Abbrechen</button><button class="btn btn--danger" value="confirm" id="pv-delete-confirm" disabled>Konto löschen</button></div>
+    </form>
+  </dialog>
+
+  <dialog class="drawer" id="pv-drawer" aria-label="Navigation">
+    <div class="drawer__head"><span class="app-brand">app<span class="pv-dot">.</span></span><form method="dialog"><button class="btn btn--ghost btn--sm" aria-label="Menü schließen">✕</button></form></div>
+    <nav class="drawer__nav"><a class="nav-item" href="#dashboard" aria-current="page">Übersicht</a><a class="nav-item" href="#dashboard">Einträge</a><a class="nav-item" href="#dashboard">Team</a><a class="nav-item" href="#loeschen">Einstellungen</a></nav>
+  </dialog>
+
+  <div class="toast-region" id="pv-toasts" role="status" aria-live="polite"></div>
+
   <!-- Formulare -->
   <section class="pv-section stack" id="formulare">
     <div class="pv-head"><span class="label-caps">Bausteine</span><h2 class="pv-h2">Bedienelemente und Zustände</h2></div>
@@ -198,5 +321,29 @@
     });
   })();
 </script>
-</body>
+<script>
+  (function () {
+    document.querySelectorAll('[data-open]').forEach(function (b) {
+      b.addEventListener('click', function () { var d = document.getElementById(b.dataset.open); if (d && d.showModal) d.showModal(); });
+    });
+    document.querySelectorAll('dialog').forEach(function (d) {
+      d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+    });
+    document.querySelectorAll('#pv-drawer a').forEach(function (a) { a.addEventListener('click', function () { document.getElementById('pv-drawer').close(); }); });
+    var mail = document.getElementById('pv-delete-mail'), ok = document.getElementById('pv-delete-confirm');
+    mail.addEventListener('input', function () { ok.disabled = mail.value.trim().toLowerCase() !== 'mira@beispiel.de'; });
+    document.getElementById('pv-delete').addEventListener('close', function () {
+      if (this.returnValue === 'confirm') toast('Beispiel: Konto wäre jetzt gelöscht', 'danger');
+      mail.value = ''; ok.disabled = true;
+    });
+    var region = document.getElementById('pv-toasts');
+    function toast(msg, kind) {
+      var t = document.createElement('div'); t.className = 'toast toast--' + (kind || 'success');
+      t.innerHTML = '<span class="toast__dot"></span><span class="toast__msg"></span>';
+      t.querySelector('.toast__msg').textContent = msg;
+      region.appendChild(t); setTimeout(function () { t.remove(); }, 5000);
+    }
+    document.getElementById('pv-toast-btn').addEventListener('click', function () { toast('Änderungen gespeichert', 'success'); });
+  })();
+</script></body>
 </html>
