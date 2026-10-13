@@ -1,0 +1,14 @@
+/* Ergänzungen des Frontends zu base.css, ausschließlich mit Tokens. */
+
+.auth-card__head {
+	gap: var(--space-2);
+}
+
+.auth-card__title {
+	font-size: var(--text-2xl);
+}
+
+.auth-card__switch {
+	margin-inline: auto;
+	text-align: center;
+}
